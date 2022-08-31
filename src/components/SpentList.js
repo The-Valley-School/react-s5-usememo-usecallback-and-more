@@ -1,4 +1,5 @@
 import React from "react";
+import SpentItem from "./SpentItem";
 
 const SpentList = () => {
 
@@ -13,19 +14,38 @@ const SpentList = () => {
     ammount: 0,
   });
 
+  const addNewSpent = (event) => {
+    event.preventDefault();
+    console.log("Bloqueado el comportamiento por defecto del formulario");
+
+    const newSpentToAdd = {
+      ...newSpent,
+      id: spentList[spentList.length - 1].id + 1,
+    };
+
+    // NO HACER ESTO -> Inmutabilidad
+    // spentList.push(newSpentToAdd);
+
+    // Forma correcta:
+    setSpentList([...spentList, newSpentToAdd]);
+
+    // Limpiamos el formulario
+    setNewSpent({
+      name: "",
+      ammount: 0,
+    });
+  }
+
   return(
     <div className="spent-linst">
       <h2>Listado de gastos estimados:</h2>
 
-      {spentList.map(spent => <div key={spent.id}>
-        <strong>{spent.name}</strong> - {spent.ammount} €
-      </div>) }
+      {/* listado de gastos */}
+      {spentList.map(spent => <SpentItem key={spent.id} spent={spent}></SpentItem>) }
 
+      {/* formulario para añadir gastos */}
       <h2>Añadir nuevo gasto</h2>
-      <form onSubmit={(event) => {
-        event.preventDefault();
-        console.log("Bloqueado el comportamiento por defecto del formulario");
-      }}>
+      <form onSubmit={(event) => addNewSpent(event)}>
         <p>
           <label>Nombre del gasto:</label>
           <input type="text" name="name" id="name" value={newSpent.name} onChange={(event) => setNewSpent({
