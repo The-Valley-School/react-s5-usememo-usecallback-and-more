@@ -1,7 +1,9 @@
 import React from "react";
-import SpentItem from "./SpentItem";
+import SpentItemMemo from "./SpentItem";
 
-const SpentList = () => {
+const SpentList = React.memo(() => {
+
+  console.log("Ejecutado render SpentList");
 
   const [spentList, setSpentList] = React.useState([
     { name: "Gasolina", ammount: 200, id: 1 },
@@ -41,7 +43,7 @@ const SpentList = () => {
       <h2>Listado de gastos estimados:</h2>
 
       {/* listado de gastos */}
-      {spentList.map(spent => <SpentItem key={spent.id} spent={spent}></SpentItem>) }
+      {spentList.map(spent => <SpentItemMemo key={spent.id} spent={spent}></SpentItemMemo>) }
 
       {/* formulario para añadir gastos */}
       <h2>Añadir nuevo gasto</h2>
@@ -67,6 +69,6 @@ const SpentList = () => {
     </div>
   );
 
-}
+});
 
 export default SpentList;
