@@ -10,6 +10,10 @@ const SpentItem = (props) => {
   );
 }
 
-const SpentItemMemo = React.memo(SpentItem);
+const propsAreEqual = (previousProps, currentProps) => {
+  return previousProps.spent === currentProps.spent;
+} 
+
+const SpentItemMemo = React.memo(SpentItem, propsAreEqual);
 
 export default SpentItemMemo;
