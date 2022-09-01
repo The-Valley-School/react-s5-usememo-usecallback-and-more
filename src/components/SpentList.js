@@ -3,8 +3,6 @@ import SpentItemMemo from "./SpentItem";
 
 const SpentList = React.memo(() => {
 
-  console.log("Ejecutado render SpentList");
-
   const [spentList, setSpentList] = React.useState([
     { name: "Gasolina", ammount: 200, id: 1 },
     { name: "Netflix", ammount: 15, id: 2},
@@ -21,6 +19,11 @@ const SpentList = React.memo(() => {
   React.useEffect(() => {
     const sum = spentList.reduce((acum, spent) => acum + spent.ammount, 0);
     setTotal(sum);
+  }, [spentList]);
+
+  const deleteSpent = React.useCallback((spent) => {
+    const newSpentList = spentList.filter((item) => item.id !== spent.id);
+    setSpentList(newSpentList);
   }, [spentList]);
 
   const addNewSpent = (event) => {
@@ -50,7 +53,12 @@ const SpentList = React.memo(() => {
       <h2>Listado de gastos estimados:</h2>
 
       {/* listado de gastos */}
-      {spentList.map(spent => <SpentItemMemo total={total} key={spent.id} spent={spent}></SpentItemMemo>) }
+      {spentList.map(spent =>
+        <SpentItemMemo
+          key={spent.id}
+          spent={spent}
+          deleteItem={ deleteSpent }
+        ></SpentItemMemo>) }
 
       <p>TOTAL: { total }€</p>
 
