@@ -1,5 +1,5 @@
 import './App.css';
-import SpentList from './components/SpentList';
+import SpentList from './components/SpentList/SpentList';
 
 function App() {
   return (

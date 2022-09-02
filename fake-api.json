@@ -1,0 +1,28 @@
+{
+  "spents": [
+    {
+      "name": "Gasolina",
+      "ammount": 200,
+      "imageUrl": "https://image.shutterstock.com/image-photo/diesel-pistol-car-tank-refueling-600w-1888756075.jpg",
+      "id": 1
+    },
+    {
+      "name": "Netflix",
+      "ammount": 15,
+      "imageUrl": "https://image.shutterstock.com/image-photo/los-angeles-october-23-23021-600w-2062987472.jpg",
+      "id": 2
+    },
+    {
+      "name": "Móvil",
+      "ammount": 30,
+      "imageUrl": "https://image.shutterstock.com/image-photo/happy-businessman-sitting-coffee-shop-600w-2078709274.jpg",
+      "id": 3
+    },
+    {
+      "name": "Micrófono",
+      "ammount": 90,
+      "imageUrl": "https://image.shutterstock.com/image-vector/microphone-retro-vocal-radio-equipment-600w-1665029149.jpg",
+      "id": 4
+    }
+  ]
+}

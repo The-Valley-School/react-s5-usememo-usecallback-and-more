@@ -1,0 +1,15 @@
+.spent-item {
+    border-radius: 5px;
+    background: #FFF;
+    color: #333;
+    display: flex;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.spent-item__image {
+    width: 100px;
+    height: 100px;
+    margin-right: 20px;
+}
+
