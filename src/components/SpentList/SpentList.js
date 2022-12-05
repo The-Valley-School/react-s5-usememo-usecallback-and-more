@@ -7,18 +7,25 @@ const SpentList = React.memo(() => {
   const API_URL = "http://localhost:4000/spents";
 
   const [spentList, setSpentList] = React.useState([]);
-  const [newSpent, setNewSpent] = React.useState({ name: "", ammount: 0 });
+  const [newSpent, setNewSpent] = React.useState({ name: "", surname: "", phone: "", imageUrl: "" });
+  const [search, setSearch] = React.useState("");
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
-    const sum = spentList.reduce((acum, spent) => acum + spent.ammount, 0);
-    setTotal(sum);
+    setTotal(spentList.length);
   }, [spentList]);
 
   // Pedimos los gastos cuando se crea el componente
   React.useEffect(() => {
     getAllSpentsFromApi();
   }, []);
+
+  // Pedimos los usuarios cuando se hace una búsqueda
+  React.useEffect(() => {
+    fetch(`${API_URL}?q=${search}`)
+      .then(response => response.json())
+      .then(data => setSpentList(data));
+  }, [search]);
 
   const getAllSpentsFromApi = () => {
     fetch(API_URL)
@@ -50,14 +57,16 @@ const SpentList = React.memo(() => {
         // Limpiamos el formulario
         setNewSpent({
           name: "",
-          ammount: 0,
+          surname: "",
+          phone: "",
+          imageUrl: "",
         });
       });
   }
 
   return (
     <div className="spent-linst">
-      <h2>Listado de gastos estimados:</h2>
+      <h2>Mi agenda ({total})</h2>
 
       {/* listado de gastos */}
       {spentList.map(spent =>
@@ -67,23 +76,37 @@ const SpentList = React.memo(() => {
           deleteItem={deleteSpent}
         ></SpentItemMemo>)}
 
-      <p>TOTAL: {total}€</p>
-
-      {/* formulario para añadir gastos */}
-      <h2>Añadir nuevo gasto</h2>
+      {/* Buscador de contactos */}
+      <h2>Buscar</h2>
       <form onSubmit={(event) => addNewSpent(event)}>
         <p>
-          <label>Nombre del gasto:</label>
+          <label>Buscar:</label>
+          <input type="text" name="search" id="search" value={search} onChange={(event) => setSearch(event.target.value)} />
+        </p>
+      </form>
+
+      {/* formulario para añadir gastos */}
+      <h2>Añadir nuevo contacto</h2>
+      <form onSubmit={(event) => addNewSpent(event)}>
+        <p>
+          <label>Nombre:</label>
           <input type="text" name="name" id="name" value={newSpent.name} onChange={(event) => setNewSpent({
             ...newSpent,
             name: event.target.value,
           })} />
         </p>
         <p>
-          <label>Importe estimado del gasto:</label>
-          <input type="number" name="ammount" id="ammount" value={newSpent.ammount} onChange={(event) => setNewSpent({
+          <label>Apellidos:</label>
+          <input type="text" name="surname" id="surname" value={newSpent.surname} onChange={(event) => setNewSpent({
             ...newSpent,
-            ammount: event.target.value ? parseInt(event.target.value) : '',
+            surname: event.target.value,
+          })} />
+        </p>
+        <p>
+          <label>Teléfono:</label>
+          <input type="text" name="phone" id="phone" value={newSpent.phone} onChange={(event) => setNewSpent({
+            ...newSpent,
+            phone: event.target.value,
           })} />
         </p>
         <p>
@@ -94,7 +117,7 @@ const SpentList = React.memo(() => {
           })} />
         </p>
 
-        <button type="submit">Añadir gasto</button>
+        <button type="submit">Añadir contacto</button>
 
       </form>
     </div>
