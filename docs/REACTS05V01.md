@@ -11,7 +11,7 @@ const [newSpent, setNewSpent] = React.useState({
 });
 ```
 
-Después conectamos el valor del input mediante `value={[newSpent.name](http://newspent.name/)}` , recogemos el valor nuevo mediante `onChange={(event)` y seteamos el nuevo valor haciendo uso del setter del estado `setNewSpent({...` .
+Después conectamos el valor del input mediante `value={newspent.name}` , recogemos el valor nuevo mediante `onChange={(event)` y seteamos el nuevo valor haciendo uso del setter del estado `setNewSpent({...` .
 
 Quedaría de la siguiente forma:
 

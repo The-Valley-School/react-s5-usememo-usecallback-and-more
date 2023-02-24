@@ -2,7 +2,7 @@
 
 **React memo** permite hacer componentes puros. Un componente puro es un componente que solo depende de sus props.
 
-Referencia a la docu oficial: [https://reactjs.org/docs/react-api.html#reactmemo](https://reactjs.org/docs/react-api.html#reactmemo)
+Referencia a la docu oficial: <https://reactjs.org/docs/react-api.html#reactmemo>
 
 Cuando hacemos uso de React.memo, React se encargará de optimizar nuestro componente, pintándolo solo cuando sea necesario, es decir:
 

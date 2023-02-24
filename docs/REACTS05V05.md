@@ -2,7 +2,7 @@
 
 **React.useCallback** permite generar funciones que no cambian cada vez que repintamos, por lo que permite mejorar rendimiento al no pintar los hijos.
 
-Referencia de la documentación oficial: [https://reactjs.org/docs/hooks-reference.html#usecallback](https://reactjs.org/docs/hooks-reference.html#usecallback)
+Referencia de la documentación oficial: <https://reactjs.org/docs/hooks-reference.html#usecallback>
 
 Vamos a modificar nuestra aplicación para permitir eliminar los elementos de la lista, esto va a provocar que en cada renderizado del componente padre, la función se regenere y provoque un repintado de los hijos.
 

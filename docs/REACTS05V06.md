@@ -2,7 +2,7 @@
 
 Para trabajar con APIs vamos simular una en local haciendo uso de la siguiente librería:
 
-[https://github.com/typicode/json-server](https://github.com/typicode/json-server)
+<https://github.com/typicode/json-server>
 
 Dentro del enlace oficial podrás encontrar toda la info de cómo usarla e instalarla, aún así, vamos a dejar por aquí los comandos básicos.
 
@@ -91,6 +91,6 @@ A partir de ahí construiremos nuestra app de gastos, haremos uso de todo lo que
 
 Añadiendo además peticiones a API de tipo POST, GET y DELETE.
 
-Podrás encontrar el código final de ejemplo en Github:
+Recuerda que el código que hemos visto durante los vídeos puedes encontrarlo en el siguiente repositorio:
 
-[https://github.com/The-Valley-School/react-s5-usememo-usecallback-and-more](https://github.com/The-Valley-School/react-s5-usememo-usecallback-and-more)
+<https://github.com/The-Valley-School/react-s5-usememo-usecallback-and-more>
